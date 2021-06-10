@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bffe
+  labels:
+    app: bffe
+spec:  
+  replicas: 1  
+  selector:
+    matchLabels:
+      app: bffe
+  template:
+    metadata:      
+      labels:
+        app: bffe
+    spec:
+      containers:
+        - name: bffe
+          image: "{{ .Values.image.registry }}/bffe:{{ .Values.image.tag }}"          
